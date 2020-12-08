@@ -23,6 +23,7 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	int i, j, sh;
 	static HMENU hMenu;
+	//thread l;
 
 
 
@@ -87,21 +88,22 @@ LRESULT CALLBACK WFunc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		switch (LOWORD(wParam))
 		{
 		case ID_40001:
-xyv:		for (i = 0; i < 16; i++)
-			{
-			xyw:			mas[i] = rand() % 16;
-				for (j = 0; j < i; j++)
-					if (mas[i] == mas[j])
-						goto xyw;
-			}
-			InvalidateRect(hwnd, 0, 1);
-			break;
+		xyv:		for (i = 0; i < 16; i++)
+		{
+		xyw:			mas[i] = rand() % 16;
+			for (j = 0; j < i; j++)
+				if (mas[i] == mas[j])
+					goto xyw;
+		}
+					InvalidateRect(hwnd, 0, 1);
+					break;
 		case ID_40002:
 			for (i = 0; i < 16; i++)
 				mas[i] = mas_2[i];
 			InvalidateRect(hwnd, 0, 1);
 			break;
 		case ID_40003:
+		{
 			res = MessageBox(NULL, "Желаете проверить эту комбинацию\nна решаемость?", "Просто беспокоюсь о Вашем потеряном времени", MB_YESNO | MB_ICONINFORMATION | MB_DEFBUTTON2);
 			if (res == IDYES)
 				if (SolvabilityTest(mas))
@@ -114,8 +116,13 @@ xyv:		for (i = 0; i < 16; i++)
 				{
 					MessageBox(NULL, "Комбинация решаема!", "Результат проверки", MB_OK | MB_ICONINFORMATION);
 				}
-				sh = AStar(mas, inf_wind, hBut_);
+				//sh = 
+				//AStar(mas, inf_wind, hBut_);
+			thread l(AStar, std::ref(mas), std::ref(inf_wind), std::ref(hBut_));
+			l.detach();
 			break;
+		}
+
 		case 40004:
 			for (i = 0; i < 16; i++)
 				mas[i] = hard[i];
@@ -193,7 +200,7 @@ void ShowM(HWND hB[], int m[])
 }
 
 
-int AStar(int mas[], HWND iw[], HWND hB[])
+void AStar(int mas[], HWND iw[], HWND hB[])
 {
 	clock_t clock_start=clock();
 	clock_t clock_out;
@@ -231,7 +238,7 @@ int AStar(int mas[], HWND iw[], HWND hB[])
 		{
 			ShowSolution(Curr, Close, hB);
 			delete[] Open;
-			return Curr.dfs;
+			//return Curr.dfs;
 		}
 
 		else
@@ -284,7 +291,7 @@ int AStar(int mas[], HWND iw[], HWND hB[])
 		}
 	}
 	delete[] Open;
-	return 0;
+	//return 0;
 }
 
 bool SolvabilityTest(int mas[])

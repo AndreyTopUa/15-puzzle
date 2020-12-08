@@ -13,7 +13,7 @@ public:
 	LibraryVertex();
 	virtual ~LibraryVertex();
 
-	bool Check_In_List(Vertex,int []);//Проверка на совпадения в пассиве.
+	bool Check_In_List(Vertex,int []);//Проверка на совпадения в массиве.
 	void Min_Trip(int[]);//Получение комбинации с минимальным trip. 
 
 

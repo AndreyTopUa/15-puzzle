@@ -31,12 +31,13 @@ bool LibraryVertex::Check_In_List(Vertex v, int adr[])
 void LibraryVertex::Min_Trip(int adr[])
 {
 	int trip_tmp = 100000;
-#pragma omp parallel for
+
 	for (int i0 = 0; i0 < 16; i0++)
-#pragma omp parallel for
+
 		for(int i1=0;i1<16;i1++)
-#pragma omp parallel for
+
 			for(int i2=0; i2<16;i2++)
+
 				for (int i3=0;i3<this->list[i0][i1][i2].size();i3++)
 				{
 					if (this->list[i0][i1][i2][i3].trip< trip_tmp)

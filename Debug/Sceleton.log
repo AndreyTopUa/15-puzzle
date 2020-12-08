@@ -1,9 +1,2 @@
-﻿  Vertex.cpp
-Vertex.cpp(7): warning C4018: <: несоответствие типов со знаком и без знака
-Vertex.cpp(100): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-Vertex.cpp(108): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-Vertex.cpp(116): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-Vertex.cpp(124): warning C4244: =: преобразование "double" в "int", возможна потеря данных
-Vertex.cpp(86): warning C4101: mas_tmp: неиспользованная локальная переменная
-  Sceleton.vcxproj -> D:\10\CPP\Sceleton\Пятнашки_2\Для Гита\Пятнашки_Автосборка\.\Debug\Sceleton.exe
+﻿  Sceleton.vcxproj -> D:\10\CPP\Sceleton\Пятнашки_2\Для Гита\Пятнашки_Автосборка\.\Debug\Sceleton.exe
   Sceleton.vcxproj -> .\Debug\Sceleton.pdb (Full PDB)

@@ -26,6 +26,8 @@ using namespace std;
 void ShowM(HWND[], int[]);
 #include "LibraryVertex.h"
 #include <omp.h>
+#include <thread>
+
 
 
 LRESULT CALLBACK WFunc(HWND, UINT, WPARAM, LPARAM);
@@ -39,7 +41,7 @@ TCHAR str3[256] = "";
 TCHAR str_t[256] = "";
 
 
-int AStar(int[], HWND[], HWND[]);
+void AStar(int[], HWND[], HWND[]);
 bool SolvabilityTest(int[]); //Проверка на решаемость.
 
 
